@@ -6,21 +6,22 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material/material.module';
 import {NavModule} from './nav/nav.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {HomeComponent} from './views';
+import {CallbackComponent, ConnectSpotifyComponent, HomeComponent, MirrorLikesComponent} from './views';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        MirrorLikesComponent,
+        ConnectSpotifyComponent,
+        CallbackComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         MaterialModule,
-        NavModule,
-        FlexLayoutModule
+        NavModule
     ],
     providers: [],
     bootstrap: [AppComponent]

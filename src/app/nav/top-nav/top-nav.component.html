@@ -1,15 +1,13 @@
 <mat-toolbar color="primary">
-	<button mat-icon-button (click)="onToggleSidenav()" fxHide.gt-sm>
+	<button mat-icon-button (click)="onToggleSidenav()" id="menu">
 		<mat-icon>menu</mat-icon>
 	</button>
 	<a [routerLink]="['/']" mat-button>
 		<h1>{{title}}</h1>
 	</a>
-	<div fxFlex fxLayout fxLayoutAlign="end">
-		<div fxHide.lt-md>
-			<ng-container *ngFor="let item of items">
-				<a [routerLink]="[item.route]" mat-button>{{item.name}}</a>
-			</ng-container>
-		</div>
+	<div id="items-container">
+		<ng-container *ngFor="let item of items">
+			<a [class.currentRoute]="router.url === item.route" [routerLink]="[item.route]" mat-button>{{item.name}}</a>
+		</ng-container>
 	</div>
 </mat-toolbar>

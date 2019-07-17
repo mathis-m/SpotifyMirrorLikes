@@ -1,0 +1,23 @@
+@media screen and (min-width: 960px) {
+  #menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  #items-container {
+    display: none !important;
+  }
+}
+
+#items-container {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.currentRoute {
+  text-decoration: underline;
+  font-size: large;
+}

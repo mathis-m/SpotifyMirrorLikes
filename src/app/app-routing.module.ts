@@ -1,11 +1,22 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './views';
+import {CallbackComponent, ConnectSpotifyComponent, HomeComponent, MirrorLikesComponent} from './views';
 
 const routes: Routes = [
     {
-        path: '/',
+        path: '',
         component: HomeComponent
+    }, {
+        path: 'connect',
+        component: ConnectSpotifyComponent
+    },
+    {
+        path: 'mirror',
+        component: MirrorLikesComponent
+    },
+    {
+        path: 'callback',
+        component: CallbackComponent
     }
 ];
 

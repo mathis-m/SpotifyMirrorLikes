@@ -1,0 +1,21 @@
+@media screen and (min-width: 960px) {
+  mat-sidenav {
+    display: none;
+  }
+}
+
+mat-sidenav-container {
+  margin: 64px 0 0;
+  width: 100%;
+  height: calc(100% - 64px);
+  min-width: 100%;
+  min-height: calc(100% - 64px);
+}
+
+mm-top-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 50;
+}

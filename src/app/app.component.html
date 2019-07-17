@@ -1,12 +1,11 @@
 <div class="page">
 	<mm-top-nav [title]="title" [items]="items" (sidenavToggle)="sidenav.toggle()"></mm-top-nav>
-	<mat-sidenav-container fxFlexFill>
-		<mat-sidenav #sidenav fxHide.gt-sm>
+	<mat-sidenav-container>
+		<mat-sidenav #sidenav>
 			<mm-side-nav [items]="items" (sidenavClose)="sidenav.close()"></mm-side-nav>
 		</mat-sidenav>
-		<mat-sidenav-content fxFlexFill>
+		<mat-sidenav-content>
 			<router-outlet></router-outlet>
 		</mat-sidenav-content>
 	</mat-sidenav-container>
-	<router-outlet></router-outlet>
 </div>

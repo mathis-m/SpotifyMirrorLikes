@@ -1,0 +1,21 @@
+<div class="wrapper">
+	<div class="mat-h1">
+		Mirror your liked Songs
+	</div>
+	<div>
+		You can provide a name for the playlist(default: My Liked Songs)
+	</div>
+	<div id="warn" *ngIf="!spotifyService.hasAccess">Please connect Spotify first.</div>
+	<form class="example-form">
+		<mat-form-field class="example-full-width">
+			<input #inp matInput placeholder="MirrorPlaylistName" [disabled]="!spotifyService.hasAccess">
+		</mat-form-field>
+	</form>
+	
+	<button color="accent" [disabled]="!spotifyService.hasAccess" mat-button
+			(click)="spotifyService.mirrorPlaylist(inp.value === '' ? undefined : inp.value)">Mirror Likes
+		into Playlist
+	</button>
+
+</div>
+

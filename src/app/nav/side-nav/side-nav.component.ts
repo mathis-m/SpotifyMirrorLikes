@@ -3,7 +3,8 @@ import {NavItem} from '../interfaces/nav-item.interface';
 
 @Component({
     selector: 'mm-side-nav',
-    templateUrl: './side-nav.component.html'
+    templateUrl: './side-nav.component.html',
+    styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
     @Input() items: NavItem[] = [];

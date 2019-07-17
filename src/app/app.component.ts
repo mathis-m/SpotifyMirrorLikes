@@ -16,6 +16,16 @@ export class AppComponent {
             name: 'Home',
             route: '/',
             matIcon: 'home'
+        },
+        {
+            name: 'Connect Spotify',
+            route: '/connect',
+            matIcon: 'link'
+        },
+        {
+            name: 'Mirror Likes',
+            route: '/mirror',
+            matIcon: 'swap_horiz'
         }
     ];
 }
