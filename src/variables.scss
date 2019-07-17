@@ -1,8 +1,0 @@
-@import "theme";
-@import '~@angular/material/theming';
-
-$primary: mat-color(map-get($mm-theme, primary));
-$accent: mat-color(map-get($mm-theme, accent));
-$warn: mat-color(map-get($mm-theme, warn));
-$foreground: mat-color(map-get($mm-theme, foreground));
-$background: mat-color(map-get($mm-theme, background));
