@@ -16,6 +16,6 @@
 			(click)="spotifyService.mirrorPlaylist(inp.value === '' ? undefined : inp.value)">Mirror Likes
 		into Playlist
 	</button>
-
+	<div id="accent" *ngIf="spotifyService.wait">Mirroring your likes...</div>
 </div>
 

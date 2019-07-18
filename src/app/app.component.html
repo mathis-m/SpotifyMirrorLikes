@@ -1,8 +1,8 @@
 <div class="page">
-	<mm-top-nav [title]="title" [items]="items" (sidenavToggle)="sidenav.toggle()"></mm-top-nav>
-	<mat-sidenav-container>
+	<mm-top-nav #nav (sidenavToggle)="sidenav.toggle()" [items]="items" [title]="title"></mm-top-nav>
+	<mat-sidenav-container [style.margin-top]="nav.height">
 		<mat-sidenav #sidenav>
-			<mm-side-nav [items]="items" (sidenavClose)="sidenav.close()"></mm-side-nav>
+			<mm-side-nav (sidenavClose)="sidenav.close()" [items]="items"></mm-side-nav>
 		</mat-sidenav>
 		<mat-sidenav-content>
 			<router-outlet></router-outlet>

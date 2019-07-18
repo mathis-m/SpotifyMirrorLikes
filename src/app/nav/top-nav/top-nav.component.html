@@ -1,13 +1,14 @@
-<mat-toolbar color="primary">
-	<button mat-icon-button (click)="onToggleSidenav()" id="menu">
+<mat-toolbar color="primary" #toolbar>
+	<button (click)="onToggleSidenav()" *ngIf="responsiveService.isMobile" mat-icon-button>
 		<mat-icon>menu</mat-icon>
 	</button>
 	<a [routerLink]="['/']" mat-button>
 		<h1>{{title}}</h1>
 	</a>
-	<div id="items-container">
+	<div id="items-container" *ngIf="responsiveService.isDesktop">
 		<ng-container *ngFor="let item of items">
-			<a [class.currentRoute]="router.url === item.route" [routerLink]="[item.route]" mat-button>{{item.name}}</a>
+			<a [class.current-route]="router.url === item.route" [routerLink]="[item.route]" class="route"
+			   mat-button>{{item.name}}</a>
 		</ng-container>
 	</div>
 </mat-toolbar>

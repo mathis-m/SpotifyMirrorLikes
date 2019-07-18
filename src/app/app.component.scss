@@ -5,11 +5,15 @@
 }
 
 mat-sidenav-container {
-  margin: 64px 0 0;
+  margin: 0;
   width: 100%;
   height: calc(100% - 64px);
   min-width: 100%;
   min-height: calc(100% - 64px);
+
+  mat-sidenav-content {
+    background-color: #ffffff;
+  }
 }
 
 mm-top-nav {

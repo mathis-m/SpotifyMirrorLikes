@@ -18,7 +18,12 @@ export class SpotifyService {
     private mirrorPlaylistName = 'My Liked Songs';
 
     public hasAccess = false;
-    private redirectUri = window.location.href.indexOf('blank') === -1 ? 'http://127.0.0.1/callback/' : 'app://index.html/callback/';
+    public wait = false;
+    private redirectUri = window.location.href.indexOf('blank') === -1
+                          ? window.location.href.indexOf('github') !== -1
+                            ? 'https://mathis-m.github.io/SpotifyMirrorLikes/callback/'
+                            : 'http://127.0.0.1/callback/'
+                          : 'app://index.html/callback/';
 
     constructor(private route: ActivatedRoute, private router: Router) {
         this.spotifyApi = new SpotifyWebApi({
@@ -51,6 +56,7 @@ export class SpotifyService {
     }
 
     public async mirrorPlaylist(mirrorName = this.mirrorPlaylistName) {
+        this.wait = true;
         const allLikedSongs = await this.getAllOf(this.getLikedSongs);
         let allPlaylists = await this.getAllOf(this.getMyPlaylists);
         let mirrorPlaylist = allPlaylists.find(playlist => playlist.name === mirrorName);
@@ -69,6 +75,7 @@ export class SpotifyService {
         for (let i = 0; i < spotifyTrackUrls.length; i += chunk) {
             await this.spotifyApi.addTracksToPlaylist(mirrorPlaylist.id, spotifyTrackUrls.slice(i, i + chunk));
         }
+        this.wait = false;
     }
 
     private async getAllOf(getSongsFn: (offset) => Promise<any[]>) {
