@@ -66,14 +66,19 @@ export class SpotifyService {
             allPlaylists = await this.getAllOf(this.getMyPlaylists);
             mirrorPlaylist = allPlaylists.find(playlist => playlist.name === mirrorName);
         }
-        const mirrorSongs = await this.getPlaylistSongs(mirrorPlaylist.id);
+        /*const mirrorSongs = await this.getAllOf((offset => this.getPlaylistSongs(offset, mirrorPlaylist.id)));
         if (mirrorSongs.length !== 0) {
             await this.removeAllTracksInPlaylist(mirrorPlaylist.id, mirrorPlaylist.snapshot_id, mirrorSongs.length);
-        }
+        }*/
         const spotifyTrackUrls = allLikedSongs.map(song => `spotify:track:${song.id}`);
         const chunk = 100;
         for (let i = 0; i < spotifyTrackUrls.length; i += chunk) {
-            await this.spotifyApi.addTracksToPlaylist(mirrorPlaylist.id, spotifyTrackUrls.slice(i, i + chunk));
+            if (i === 0) {
+                await this.spotifyApi.replaceTracksInPlaylist(mirrorPlaylist.id, spotifyTrackUrls.slice(i, i + chunk));
+            } else {
+                await this.spotifyApi.addTracksToPlaylist(mirrorPlaylist.id, spotifyTrackUrls.slice(i, i + chunk));
+
+            }
         }
         this.wait = false;
     }
@@ -105,7 +110,7 @@ export class SpotifyService {
             offset
         }).then(res => res.body.items);
 
-    private getPlaylistSongs(playlistId: string): Promise<any[]> {
+    private getPlaylistSongs(offset: number, playlistId: string): Promise<any[]> {
         return this.spotifyApi.getPlaylist(playlistId).then(res => res.body.tracks.items);
     }
 
